@@ -1,0 +1,100 @@
+/* src/styles/tokens.css */
+:root {
+  /* Brand Colors — Premium Light Theme */
+  --bg-primary: #f8fafc;      /* Slate 50 - clean light background */
+  --bg-secondary: #ffffff;    /* Pure White */
+  --bg-tertiary: #f1f5f9;     /* Slate 100 - soft gray */
+  --bg-section-light: #ffffff;
+  
+  --surface-01: #ffffff;       /* Pure White surface */
+  --surface-02: #f1f5f9;       /* Slate 100 surface */
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --surface-glass-hover: rgba(255, 255, 255, 0.9);
+
+  /* Primary Blues */
+  --accent-primary: #2563eb;   /* Electric Blue */
+  --accent-secondary: #1d4ed8; /* Royal Blue */
+  --accent-azure: #3b82f6;     /* Azure */
+  
+  /* Purple/Violet Accents */
+  --accent-purple: #7c3aed;    /* Violet */
+  --accent-purple-light: #8b5cf6; /* Light Violet */
+  --accent-indigo: #6366f1;    /* Indigo */
+  
+  /* Cyan */
+  --accent-cyan: #06b6d4;      /* Cyan Highlights */
+
+  /* Text — Dark Contrast for Light Theme */
+  --text-primary: #0f172a;    /* Slate 900 - main text */
+  --text-secondary: #334155;  /* Slate 700 - secondary headings/text */
+  --text-muted: #64748b;      /* Slate 500 - supporting descriptions */
+  --text-disabled: #94a3b8;   /* Slate 400 - secondary labels */
+  --text-dark: #0f172a;
+
+  /* Borders */
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-glass: rgba(15, 23, 42, 0.05);
+  --border-active: rgba(124, 58, 237, 0.5);
+
+  /* Semantic Colors */
+  --success: #10b981;          /* Emerald Green */
+  --warning: #f59e0b;          /* Amber */
+  --error: #ef4444;            /* Crimson */
+  --info: #0ea5e9;             /* Sky Blue */
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-purple) 100%);
+  --gradient-purple: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-purple-light) 100%);
+  --gradient-blue-purple: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-indigo) 50%, var(--accent-purple) 100%);
+  --gradient-dark: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 100%);
+  --gradient-hero: linear-gradient(135deg, #f8fafc 0%, #f5f3ff 50%, #e0f2fe 100%);
+
+  /* Spacing Scale (8px Grid) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-massive: 128px;
+
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;            /* Inputs */
+  --radius-md: 8px;            /* Buttons */
+  --radius-lg: 12px;           /* Cards */
+  --radius-xl: 16px;           /* Dialogs, Panels */
+  --radius-2xl: 24px;          /* Large hero elements */
+  --radius-full: 9999px;       /* Badges, Pills */
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 20px -4px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 10px 30px -10px rgba(15, 23, 42, 0.12);
+  --shadow-glass: inset 0 1px 1px rgba(255, 255, 255, 0.7), 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  --shadow-glow-blue: 0 0 20px rgba(37, 99, 235, 0.2);
+  --shadow-glow-purple: 0 0 30px rgba(124, 58, 237, 0.25);
+  --shadow-glow-cyan: 0 0 15px rgba(6, 182, 212, 0.15);
+  --shadow-glow-card: 0 20px 60px rgba(124, 58, 237, 0.08);
+
+  /* Animation Timings */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-cinematic: 1200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-Index Hierarchy */
+  --z-base: 0;
+  --z-card: 10;
+  --z-overlay: 50;
+  --z-dropdown: 100;
+  --z-nav: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-cursor: 500;
+}

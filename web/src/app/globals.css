@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/* Import Custom Design System Styles */
+@import "../styles/tokens.css";
+@import "../styles/glassmorphism.css";
+@import "../styles/scrollbar.css";
+@import "../styles/typography.css";
+@import "../styles/animations.css";
+
+@theme {
+  /* Brand Theme Custom Colors */
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-section-light: var(--bg-section-light);
+  
+  --color-surface-01: var(--surface-01);
+  --color-surface-02: var(--surface-02);
+  --color-surface-glass: var(--surface-glass);
+  
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-azure: var(--accent-azure);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-purple-light: var(--accent-purple-light);
+  --color-accent-indigo: var(--accent-indigo);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-dark: var(--text-dark);
+  
+  --color-border-subtle: var(--border-subtle);
+  --color-border-glass: var(--border-glass);
+  --color-border-active: var(--border-active);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+  
+  /* Radii mapping */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+  
+  /* Transition durations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float-slow 10s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 8s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 25s linear infinite;
+  --animate-border-glow: border-glow-glow 4s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s ease-in-out infinite;
+  --animate-drift: drift 20s ease-in-out infinite;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Lenis smooth scrolling rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+* {
+  box-sizing: inherit;
+}
