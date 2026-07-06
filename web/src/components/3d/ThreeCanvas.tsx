@@ -12,20 +12,8 @@ interface ThreeCanvasProps {
     position?: [number, number, number];
     fov?: number;
   };
-}
-
-function WebGLFallback({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "w-full h-full flex items-center justify-center",
-        "bg-gradient-to-br from-surface-01 to-bg-secondary rounded-2xl",
-        className
-      )}
-    >
-      <div className="w-24 h-24 border border-border-active rounded-full opacity-30 animate-pulse-slow" />
-    </div>
-  );
+  shadows?: boolean;
+  frameloop?: "always" | "demand" | "never";
 }
 
 export function ThreeCanvas({
@@ -33,14 +21,25 @@ export function ThreeCanvas({
   className,
   fallback,
   camera = { position: [0, 0, 5], fov: 60 },
+  shadows = false,
+  frameloop = "always",
 }: ThreeCanvasProps) {
   return (
-    <div className={cn("w-full h-full", className)}>
-      <Suspense fallback={fallback || <WebGLFallback />}>
+    /* Wrapper: transparent background, no border, no rounded corners
+     * so the canvas blends seamlessly into whatever section it's in.
+     * The "box flash" was caused by the old WebGLFallback having a
+     * bg-gradient — now we use null as the Suspense fallback. */
+    <div
+      className={cn("w-full h-full", className)}
+      style={{ background: "transparent" }}
+    >
+      <Suspense fallback={fallback ?? null}>
         <Canvas
           camera={{ position: camera.position, fov: camera.fov }}
-          gl={{ antialias: true, alpha: true }}
-          dpr={[1, 1.5]}
+          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+          dpr={[1, 1]}
+          shadows={shadows}
+          frameloop={frameloop}
           style={{ background: "transparent" }}
         >
           {children}
@@ -49,4 +48,5 @@ export function ThreeCanvas({
     </div>
   );
 }
+
 export default ThreeCanvas;

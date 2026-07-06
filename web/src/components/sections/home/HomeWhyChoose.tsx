@@ -40,37 +40,80 @@ const features = [
   },
 ];
 
-// 3D stacked cubes visual
-function StackedCubes() {
-  const cubeData = [
-    { y: 60, size: 90, color: "#94a3b8" },
-    { y: 20, size: 75, color: "#7c3aed" },
-    { y: -15, size: 55, color: "#5b21b6" },
+// Orbital ring visual
+function OrbitalVisual() {
+  const orbits = [
+    { size: 160, duration: 6,  color: "#7c3aed", dotSize: 10, tilt: "rotateX(60deg)" },
+    { size: 110, duration: 4,  color: "#2563eb", dotSize: 8,  tilt: "rotateX(60deg) rotateZ(60deg)" },
+    { size: 70,  duration: 2.8, color: "#06b6d4", dotSize: 6,  tilt: "rotateX(60deg) rotateZ(120deg)" },
   ];
 
   return (
-    <div className="relative w-full h-64 flex items-center justify-center">
-      {/* Glow platform */}
-      <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-6 rounded-full blur-xl opacity-40"
-        style={{ background: "radial-gradient(ellipse, rgba(124, 58, 237, 0.3) 0%, transparent 80%)" }}
+    <div className="relative w-64 h-64 flex items-center justify-center" style={{ perspective: "600px" }}>
+      {/* Platform glow */}
+      <motion.div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-40 h-4 rounded-full"
+        style={{ background: "radial-gradient(ellipse, rgba(124,58,237,0.35) 0%, transparent 80%)", filter: "blur(8px)" }}
+        animate={{ opacity: [0.4, 0.9, 0.4], scaleX: [0.8, 1.2, 0.8] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       />
-      {cubeData.map((cube, i) => (
-        <motion.div
+
+      {/* Orbiting rings */}
+      {orbits.map((o, i) => (
+        <div
           key={i}
           className="absolute"
-          style={{ bottom: `${cube.y}px` }}
-          animate={{ y: [-4, 4, -4] }}
-          transition={{ duration: 3 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+          style={{
+            width: o.size,
+            height: o.size,
+            transform: o.tilt,
+          }}
         >
-          <svg width={cube.size} height={cube.size} viewBox="0 0 100 100" fill="none">
-            <polygon points="50,8 92,30 50,52 8,30" fill={cube.color} opacity="0.95" />
-            <polygon points="92,30 92,72 50,92 50,52" fill={cube.color} opacity="0.6" />
-            <polygon points="8,30 50,52 50,92 8,72" fill={cube.color} opacity="0.75" />
-            <polygon points="50,8 72,19 50,30 28,19" fill="white" opacity="0.15" />
-          </svg>
-        </motion.div>
+          {/* Ring border */}
+          <div
+            className="w-full h-full rounded-full"
+            style={{ border: `1px solid ${o.color}30` }}
+          />
+          {/* Orbiting dot */}
+          <motion.div
+            className="absolute rounded-full"
+            style={{
+              width: o.dotSize,
+              height: o.dotSize,
+              background: o.color,
+              boxShadow: `0 0 10px ${o.color}80`,
+              top: "50%",
+              left: "50%",
+              marginTop: -(o.size / 2),
+              marginLeft: -(o.dotSize / 2),
+            }}
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: o.duration, repeat: Infinity, ease: "linear", delay: i * 0.5 }}
+            transformTemplate={({ rotate }) =>
+              `translateX(${o.size / 2 - o.dotSize / 2}px) rotate(${rotate})`
+            }
+          />
+        </div>
       ))}
+
+      {/* Center cube */}
+      <motion.div
+        animate={{ y: [-5, 5, -5], rotate: [0, 2, 0, -2, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <svg width="80" height="80" viewBox="0 0 100 100" fill="none">
+          <defs>
+            <filter id="cube-glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <polygon points="50,8 92,30 50,52 8,30" fill="#7c3aed" filter="url(#cube-glow)" />
+          <polygon points="92,30 92,72 50,92 50,52" fill="#5b21b6" />
+          <polygon points="8,30 50,52 50,92 8,72" fill="#6d28d9" />
+          <polygon points="50,8 72,19 50,30 28,19" fill="white" opacity="0.25" />
+        </svg>
+      </motion.div>
     </div>
   );
 }
@@ -169,7 +212,7 @@ export function HomeWhyChoose() {
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.7 }}
           >
-            <StackedCubes />
+            <OrbitalVisual />
           </motion.div>
 
           {/* RIGHT: Feature cards 2x2 */}
