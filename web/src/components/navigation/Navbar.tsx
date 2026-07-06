@@ -14,9 +14,9 @@ const navLinks = [
   ]},
   { label: "Services", href: "/services", hasDropdown: true, children: [
     { label: "Custom Software", href: "/services", desc: "Tailored development" },
-    { label: "ERP Development", href: "/services", desc: "Enterprise solutions" },
-    { label: "AI Solutions", href: "/services", desc: "Intelligent automation" },
-    { label: "Cloud Migration", href: "/services", desc: "Scalable infrastructure" },
+    { label: "ERP Development", href: "/services/erp-development", desc: "Enterprise solutions" },
+    { label: "AI Solutions", href: "/services/ai-solutions", desc: "Intelligent automation" },
+    { label: "Cloud Migration", href: "/services/cloud-migration", desc: "Scalable infrastructure" },
   ]},
   { label: "About Us", href: "/about" },
   { label: "Careers", href: "/careers" },
