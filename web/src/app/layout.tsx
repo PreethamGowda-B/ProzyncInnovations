@@ -26,18 +26,25 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/"
   },
+  icons: {
+    icon: "/prozync-logo.png.png",
+    apple: "/prozync-logo.png.png",
+    shortcut: "/prozync-logo.png.png",
+  },
   openGraph: {
     title: "Prozync Innovations | Engineering the Future of Business Software",
     description: "Enterprise software, AI solutions, SaaS platforms, and custom digital products built to scale.",
     url: "/",
     siteName: "Prozync Innovations",
     locale: "en_US",
-    type: "website"
+    type: "website",
+    images: [{ url: "/prozync-logo.png.png", width: 512, height: 512, alt: "Prozync Innovations" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Prozync Innovations | Engineering the Future of Business Software",
-    description: "Enterprise software, AI solutions, SaaS platforms, and custom digital products built to scale."
+    description: "Enterprise software, AI solutions, SaaS platforms, and custom digital products built to scale.",
+    images: ["/prozync-logo.png.png"],
   }
 };
 

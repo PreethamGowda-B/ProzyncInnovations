@@ -2,6 +2,7 @@
 /* src/components/navigation/Navbar.tsx */
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
@@ -71,9 +72,14 @@ export function Navbar() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent-primary to-accent-purple flex items-center justify-center shadow-glow-purple">
-              <span className="text-base font-black text-white font-heading">P</span>
-            </div>
+            <Image
+              src="/prozync-logo.png.png"
+              alt="Prozync Innovations"
+              width={36}
+              height={36}
+              className="rounded-lg"
+              priority
+            />
             <div className="flex flex-col leading-none">
               <span className="text-sm font-black tracking-widest text-text-primary font-heading">PROZYNC</span>
               <span className="text-[9px] tracking-[0.15em] text-text-muted font-medium uppercase">Innovations</span>
